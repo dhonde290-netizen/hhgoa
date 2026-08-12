@@ -5,6 +5,7 @@ import confetti from 'canvas-confetti';
 import { Download, Share2, CheckCircle2 } from 'lucide-react';
 import { Backdrop } from './components/Backdrop';
 import { ControlPanel } from './components/ControlPanel';
+import { CustomCursor } from './components/CustomCursor';
 import { CardStickerbomb } from './components/CardStickerbomb';
 import { ShareModal } from './components/ShareModal';
 import { getRandomTitle, generateBuilderId } from './utils/titles';
@@ -106,6 +107,7 @@ export default function App() {
 
   return (
     <Backdrop>
+      <CustomCursor />
       {/* Rephrased Top Hero Section */}
       <div className="text-center max-w-3xl mx-auto space-y-4 mb-10 mt-4 animate-fade-in">
         <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight font-serif uppercase leading-tight">
