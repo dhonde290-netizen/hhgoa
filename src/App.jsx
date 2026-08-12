@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { toPng } from 'html-to-image';
+import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import confetti from 'canvas-confetti';
 import { Download, Share2, CheckCircle2 } from 'lucide-react';
@@ -65,12 +65,13 @@ export default function App() {
       setTilt({ x: 0, y: 0 });
       await new Promise((r) => setTimeout(r, 100));
 
-      const dataUrl = await toPng(cardRef.current, {
-        pixelRatio: 3,
-        quality: 0.98,
+      const canvas = await html2canvas(cardRef.current, {
+        scale: 3,
         useCORS: true,
-        skipAutoScale: true
+        allowTaint: true,
+        backgroundColor: null
       });
+      const dataUrl = canvas.toDataURL('image/png', 1.0);
 
       setGeneratedImageUrl(dataUrl);
       setIsExporting(false);
