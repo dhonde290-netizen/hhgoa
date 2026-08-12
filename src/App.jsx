@@ -6,6 +6,7 @@ import { Download, Share2, CheckCircle2 } from 'lucide-react';
 import { Backdrop } from './components/Backdrop';
 import { ControlPanel } from './components/ControlPanel';
 import { CardStickerbomb } from './components/CardStickerbomb';
+import { ShareModal } from './components/ShareModal';
 import { getRandomTitle, generateBuilderId } from './utils/titles';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   });
 
   const [activeTheme, setActiveTheme] = useState('STICKERBOMB');
+  const [isShareOpen, setIsShareOpen] = useState(false);
   const [generatedImageUrl, setGeneratedImageUrl] = useState(null);
   const [isExporting, setIsExporting] = useState(false);
   const [isGenerated, setIsGenerated] = useState(false);
@@ -95,44 +97,10 @@ export default function App() {
     }
   };
 
-  const handleShareToX = async () => {
+  const handleShareModalOpen = async () => {
     const dataUrl = await captureCardImage();
-    if (!dataUrl) return;
-
-    try {
-      // Convert base64 to Blob then File
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      const file = new File([blob], `HHGoa_Pass_${badgeData.name.replace(/\s+/g, '_')}.png`, { type: 'image/png' });
-
-      const text = `I'm heading to Hacker House Goa! 🌴💻\n\nCheckout my builder pass! #FrameInGoa @dhonde290`;
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: 'Hacker House Goa Pass',
-          text: text
-        });
-        triggerConfetti();
-      } else {
-        // Fallback for desktop browsers that don't support file sharing
-        // Trigger download first
-        const link = document.createElement('a');
-        link.download = file.name;
-        link.href = dataUrl;
-        link.click();
-        
-        // Then open Twitter intent
-        const fallbackText = encodeURIComponent(`${text}\n\n(I'll attach my downloaded pass to this tweet!)`);
-        window.open(`https://twitter.com/intent/tweet?text=${fallbackText}`, '_blank');
-        triggerConfetti();
-      }
-    } catch (err) {
-      if (err.name !== 'AbortError') {
-        console.error('Error sharing:', err);
-        alert('Could not share automatically. The pass has been downloaded instead.');
-        handleDownload(); // fallback to normal download
-      }
+    if (dataUrl) {
+      setIsShareOpen(true);
     }
   };
 
@@ -158,7 +126,7 @@ export default function App() {
               activeTheme={activeTheme}
               onSelectTheme={(theme) => setActiveTheme(theme)}
               onDownload={handleDownload}
-              onShare={handleShareToX}
+              onShare={handleShareModalOpen}
               isGenerated={isGenerated}
               setIsGenerated={setIsGenerated}
             />
@@ -206,7 +174,7 @@ export default function App() {
               </button>
               
               <button
-                onClick={handleShareToX}
+                onClick={handleShareModalOpen}
                 className="w-full py-4 px-6 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
               >
                 <Share2 className="w-5 h-5" />
@@ -220,6 +188,15 @@ export default function App() {
           </div>
         )}
       </div>
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+        imageUrl={generatedImageUrl}
+        badgeData={badgeData}
+        onDownload={handleDownload}
+      />
     </Backdrop>
   );
 }
