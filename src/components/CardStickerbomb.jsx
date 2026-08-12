@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane, QrCode } from 'lucide-react';
+import { Plane, QrCode, Sparkles } from 'lucide-react';
 import { SKILL_TAG_OPTIONS } from '../utils/titles';
 
 export function CardStickerbomb({ data }) {
@@ -10,227 +10,206 @@ export function CardStickerbomb({ data }) {
   const originCode = origin.substring(0, 3).toUpperCase();
   const date = "28-31 OCT 2026";
   const flight = "HH26";
-  const seat = "BUILD-34";
-  const gate = "B-26";
+  const seat = "B-34";
+  const gate = "G-08";
   const pnr = "HH26-U2AB1";
   const builderId = "HH26-43B8";
   const photoUrl = data.photoUrl;
   const selectedSkills = SKILL_TAG_OPTIONS.filter((s) => data.skills?.includes(s.id));
 
   return (
-    <div className="w-[800px] h-[400px] bg-[#fdfaf4]/90 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.15)] relative overflow-hidden flex font-sans border-2 border-white/50 rounded-3xl" style={{ isolation: 'isolate' }}>
+    <div className="w-[800px] h-[400px] bg-white rounded-[2rem] shadow-2xl relative overflow-hidden flex font-sans border-4 border-white" style={{ isolation: 'isolate' }}>
       
+      {/* Background Graphic */}
+      <div 
+        className="absolute inset-0 opacity-20 z-0"
+        style={{
+          backgroundImage: 'url(/assets/goa-poster.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+          filter: 'grayscale(100%) contrast(120%)',
+          maskImage: 'linear-gradient(to right, black 20%, transparent 90%)',
+          WebkitMaskImage: 'linear-gradient(to right, black 20%, transparent 90%)'
+        }}
+      />
+      
+      {/* Abstract Shapes */}
+      <div className="absolute top-[-50px] right-[180px] w-64 h-64 bg-amber-400/20 rounded-full blur-3xl z-0 pointer-events-none"></div>
+      <div className="absolute bottom-[-50px] left-[50px] w-64 h-64 bg-teal-400/20 rounded-full blur-3xl z-0 pointer-events-none"></div>
+
       {/* ------------------------------------------- */}
       {/* LEFT SECTION (MAIN TICKET)                  */}
       {/* ------------------------------------------- */}
-      <div className="flex-1 relative flex">
+      <div className="flex-1 relative flex z-10">
         
-        {/* Left Edge Dark Blue Bar */}
-        <div className="w-16 h-full bg-[#2b3a4a] text-white flex flex-col items-center justify-between py-6 rounded-l-3xl z-20">
-          <div className="w-8 h-8 rounded-full border border-white/50 flex items-center justify-center">
-            <div className="w-6 h-6 rounded-full border border-white/50 grid grid-cols-2 grid-rows-2">
-              <div className="border-r border-b border-white/50"></div>
-              <div className="border-b border-white/50"></div>
-              <div className="border-r border-white/50"></div>
-              <div></div>
-            </div>
-          </div>
+        {/* Sleek Dark Spine */}
+        <div className="w-12 h-full bg-slate-900 flex flex-col items-center justify-between py-8 rounded-l-[1.75rem]">
+          <Plane className="w-5 h-5 text-amber-400 rotate-180" />
           <div className="flex-1 flex items-center justify-center">
-            <span className="tracking-[0.3em] font-medium text-sm transform -rotate-90 whitespace-nowrap">
-              HACKERHOUSE PASS
+            <span className="tracking-[0.4em] font-bold text-[10px] text-white/50 transform -rotate-90 whitespace-nowrap uppercase">
+              Hacker House • 2026
             </span>
           </div>
-          <Plane className="w-6 h-6 rotate-180 opacity-80" />
+          <div className="w-2 h-2 rounded-full bg-amber-400"></div>
         </div>
 
-        {/* Main Content Area */}
-        <div className="flex-1 relative p-6 pr-12 flex flex-col justify-between z-20">
+        {/* Main Content */}
+        <div className="flex-1 p-8 pr-10 flex flex-col justify-between">
           
-          {/* Top Row: Passenger & Destination Header */}
+          {/* Header Row */}
           <div className="flex justify-between items-start">
-            <div className="flex flex-col z-30 max-w-[180px]">
-              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">Passenger</span>
-              <span className="text-xl text-slate-800 font-bold uppercase tracking-wide leading-tight line-clamp-2">{name}</span>
-              <span className="text-[10px] text-red-800/90 font-bold uppercase tracking-widest mt-1">{role}</span>
+            <div className="flex flex-col z-30 max-w-[220px]">
+              <span className="text-[9px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Passenger Name</span>
+              <span className="text-2xl text-slate-900 font-black uppercase tracking-tight leading-none truncate">{name}</span>
+              <span className="text-[10px] text-teal-700 font-bold uppercase tracking-widest mt-2">{role}</span>
+              
               {/* Tech Stack */}
               {selectedSkills.length > 0 && (
-                <div className="flex gap-1 mt-2 flex-wrap max-w-[200px]">
+                <div className="flex gap-1.5 mt-3 flex-wrap">
                   {selectedSkills.map(skill => (
-                    <span key={skill.id} className="text-[8px] bg-slate-800 text-white px-1.5 py-0.5 rounded-sm font-bold uppercase tracking-wider">
+                    <span key={skill.id} className="text-[8px] bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded font-bold uppercase tracking-widest">
                       {skill.label}
                     </span>
                   ))}
                 </div>
               )}
             </div>
-            
-            <div className="flex flex-col items-center absolute left-1/2 -translate-x-1/2 top-4">
-              <h1 className="text-5xl font-serif text-[#1e293b] tracking-widest uppercase">GOA</h1>
-              <span className="text-xs font-bold text-red-800/70 tracking-[0.4em] uppercase mt-1">INDIA</span>
+
+            {/* VIP Badge & QR */}
+            <div className="flex items-start gap-4">
+              <div className="flex flex-col items-end">
+                <span className="text-[9px] text-slate-400 font-black tracking-[0.2em] uppercase mb-1">Class</span>
+                <div className="px-3 py-1 bg-amber-100 text-amber-700 rounded-md text-[10px] font-black tracking-widest border border-amber-200 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" /> VIP BUILDER
+                </div>
+              </div>
+              <div className="w-14 h-14 bg-white p-1.5 rounded-xl shadow-sm border border-slate-100 flex items-center justify-center">
+                <QrCode className="w-full h-full text-slate-800" strokeWidth={1.5} />
+              </div>
             </div>
           </div>
 
-          {/* Middle Row: Flight Route */}
-          <div className="flex justify-between items-center mt-2">
+          {/* Flight Path (Centerpiece) */}
+          <div className="flex items-center justify-between w-full mt-4">
             <div className="flex flex-col">
-              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">From (Origin)</span>
-              <span className="text-4xl font-bold text-[#2b3a4a] tracking-tighter">{originCode}</span>
-              <span className="text-[10px] font-bold text-red-800/80 uppercase mt-1">{origin}</span>
+              <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Origin</span>
+              <span className="text-5xl font-black text-slate-800 tracking-tighter leading-none">{originCode}</span>
+              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-2 truncate max-w-[100px]">{origin}</span>
             </div>
 
-            <div className="flex-1 flex items-center justify-center relative px-6">
-              <div className="w-full h-[2px] bg-slate-300"></div>
-              <div className="w-4 h-4 rounded-full bg-[#2b3a4a] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+            <div className="flex-1 flex flex-col items-center justify-center px-6 relative">
+              <div className="w-full flex items-center">
+                <div className="w-2 h-2 rounded-full border-2 border-slate-300 bg-white z-10"></div>
+                <div className="flex-1 h-[2px] bg-slate-200 relative overflow-hidden">
+                  {/* Dashed line effect */}
+                  <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,transparent_50%,#cbd5e1_50%,#cbd5e1_100%)] bg-[length:12px_2px]"></div>
+                </div>
+                <Plane className="w-6 h-6 text-teal-600 mx-2" />
+                <div className="flex-1 h-[2px] bg-slate-200 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,transparent_50%,#cbd5e1_50%,#cbd5e1_100%)] bg-[length:12px_2px]"></div>
+                </div>
+                <div className="w-2 h-2 rounded-full border-2 border-teal-600 bg-white z-10"></div>
+              </div>
+              <span className="text-[9px] font-bold text-slate-400 tracking-widest uppercase mt-3 bg-white px-2">Direct Flight</span>
             </div>
 
             <div className="flex flex-col items-end text-right">
-              <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">To (Destination)</span>
-              <span className="text-4xl font-bold text-[#2b3a4a] tracking-tighter">GOA</span>
-              <span className="text-[10px] font-bold text-red-800/80 uppercase mt-1">HACKER HOUSE</span>
-            </div>
-
-            {/* Added Boarding Pass Details & QR Code */}
-            <div className="ml-8 flex items-center gap-6 z-30 bg-white/40 p-3 rounded-xl border border-white/60 shadow-sm backdrop-blur-sm">
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col text-right">
-                  <span className="text-[8px] text-slate-500 font-bold uppercase tracking-widest">Class</span>
-                  <span className="text-sm font-black text-red-800/90 tracking-widest uppercase leading-none">VIP</span>
-                </div>
-                <div className="flex flex-col text-right">
-                  <span className="text-[8px] text-slate-500 font-bold uppercase tracking-widest">Boarding</span>
-                  <span className="text-sm font-bold text-[#2b3a4a] tracking-widest uppercase leading-none">08:00 AM</span>
-                </div>
-              </div>
-              <div className="w-16 h-16 bg-white p-1 rounded-lg shadow-sm border border-slate-200 shrink-0 flex items-center justify-center">
-                <QrCode className="w-12 h-12 text-[#2b3a4a]" strokeWidth={1.5} />
-              </div>
+              <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Destination</span>
+              <span className="text-5xl font-black text-teal-600 tracking-tighter leading-none">GOA</span>
+              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-2">Hacker House</span>
             </div>
           </div>
 
-          {/* Bottom Row: Details Grid */}
-          <div className="grid grid-cols-4 gap-4 mt-3">
+          {/* Details Grid */}
+          <div className="flex items-center justify-between mt-6 bg-slate-50 p-4 rounded-2xl border border-slate-100">
             <div className="flex flex-col">
-              <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider mb-1">Flight</span>
-              <span className="text-xs text-slate-800 font-bold uppercase">{flight}</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider mb-1">Date</span>
-              <span className="text-xs text-slate-800 font-bold uppercase">{date}</span>
+              <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Flight</span>
+              <span className="text-sm text-slate-800 font-bold">{flight}</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider mb-1">Gate / Seat</span>
-              <span className="text-xs text-slate-800 font-bold uppercase">{gate} / {seat}</span>
+              <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Date</span>
+              <span className="text-sm text-slate-800 font-bold">{date}</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider mb-1">Builder ID</span>
-              <span className="text-xs text-slate-800 font-bold uppercase">{builderId}</span>
+              <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Gate</span>
+              <span className="text-sm text-slate-800 font-bold">{gate}</span>
             </div>
-          </div>
-
-          {/* Footer Message */}
-          <div className="mt-3 flex items-center justify-between z-30">
-            <div className="flex items-center gap-2 text-red-800/80">
-              <span className="text-[10px] font-bold uppercase tracking-widest">BUILD &rarr; COLLAB &rarr; SHIP</span>
+            <div className="flex flex-col">
+              <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Seat</span>
+              <span className="text-sm text-slate-800 font-bold">{seat}</span>
             </div>
-            <div className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">LESS NOISE. MORE SIGNAL.</div>
+            <div className="flex flex-col">
+              <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Builder ID</span>
+              <span className="text-sm text-teal-700 font-black">{builderId}</span>
+            </div>
           </div>
 
         </div>
+      </div>
 
-        {/* Center Aesthetic Background Image of Goa (Blended) */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none overflow-hidden rounded-l-3xl mix-blend-multiply">
-          <div 
-            className="w-[120%] h-[120%] opacity-35"
-            style={{
-              backgroundImage: 'url(/assets/goa-poster.jpg)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center 60%',
-              maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)',
-              WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)'
-            }}
-          />
-        </div>
-
-        {/* Vintage Stamp Overlay */}
-        <div className="absolute bottom-8 right-12 z-20 opacity-60 mix-blend-multiply rotate-[-15deg]">
-          <div className="w-24 h-24 rounded-full border-2 border-red-800 flex flex-col items-center justify-center relative">
-            <svg className="absolute w-full h-full" viewBox="0 0 100 100">
-              <path id="curve" d="M 10 50 A 40 40 0 1 1 90 50 A 40 40 0 1 1 10 50" fill="transparent" />
-              <text className="text-[12px] font-bold fill-red-800 uppercase tracking-widest">
-                <textPath href="#curve" startOffset="50%" textAnchor="middle">GOA INDIA HACKER HOUSE</textPath>
-              </text>
-            </svg>
-            <Plane className="w-8 h-8 text-red-800 rotate-45" fill="currentColor" />
-            <div className="absolute -right-12 top-1/2 -translate-y-1/2 flex flex-col gap-1">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="w-8 h-[2px] bg-red-800" style={{ transform: `rotate(${i * 2 - 3}deg)` }}></div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* ------------------------------------------- */}
+      {/* TICKET PERFORATION LINE                     */}
+      {/* ------------------------------------------- */}
+      <div className="w-[2px] h-full relative z-20 flex flex-col items-center justify-between py-2">
+        {/* Top Notch */}
+        <div className="w-6 h-6 bg-transparent border-t-4 border-r-4 border-white rounded-full absolute -top-4 shadow-[inset_0_-4px_4px_rgba(0,0,0,0.05)]"></div>
+        
+        {/* Dashed Line */}
+        <div className="w-[2px] h-[360px] bg-[linear-gradient(180deg,transparent_0%,transparent_50%,#e2e8f0_50%,#e2e8f0_100%)] bg-[length:2px_12px] opacity-70"></div>
+        
+        {/* Bottom Notch */}
+        <div className="w-6 h-6 bg-transparent border-b-4 border-r-4 border-white rounded-full absolute -bottom-4 shadow-[inset_0_4px_4px_rgba(0,0,0,0.05)]"></div>
       </div>
 
       {/* ------------------------------------------- */}
       {/* RIGHT SECTION (STUB)                        */}
       {/* ------------------------------------------- */}
-      <div className="w-[220px] h-full bg-transparent relative z-20 flex flex-col rounded-r-3xl">
+      <div className="w-[220px] h-full bg-slate-50 relative z-10 flex flex-col rounded-r-[1.75rem]">
         
-        {/* Stub Header */}
-        <div className="h-16 bg-[#2b3a4a] text-white flex items-center justify-between px-4 rounded-tr-3xl">
-          <span className="text-[10px] font-medium tracking-widest">HACKERHOUSE PASS</span>
-          <Plane className="w-4 h-4 rotate-45 opacity-80" fill="currentColor" />
-        </div>
-
-        {/* Stub Content */}
-        <div className="p-4 pr-16 flex-1 flex flex-col items-center">
+        <div className="flex-1 p-6 flex flex-col justify-between items-center relative">
           
-          {/* Prominent Photo */}
-          <div className="w-full h-44 rounded-xl border-4 border-white overflow-hidden bg-slate-200 shadow-md relative z-30 shrink-0">
+          {/* Photo */}
+          <div className="w-[140px] h-[160px] rounded-2xl overflow-hidden bg-slate-200 border-[6px] border-white shadow-lg shrink-0 relative z-20">
             {photoUrl ? (
               <img src={photoUrl} className="w-full h-full object-cover" alt="Passenger" />
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center text-slate-400">
-                <span className="text-xs font-bold tracking-widest uppercase">Photo</span>
+              <div className="w-full h-full flex items-center justify-center bg-slate-100 text-slate-300">
+                <span className="text-[10px] font-black uppercase tracking-widest">Photo</span>
               </div>
             )}
-          </div>
-
-          <div className="w-full mt-4 flex flex-col gap-2 flex-1 justify-between pb-2">
-            <div>
-              <span className="text-[8px] text-slate-500 font-bold uppercase tracking-wider block mb-0.5">Passenger</span>
-              <span className="text-sm font-bold text-[#2b3a4a] leading-tight block truncate">{name}</span>
-            </div>
             
-            <div className="flex justify-between items-center">
-              <div>
-                <span className="text-[8px] text-slate-500 font-bold uppercase tracking-wider block">Flight</span>
-                <span className="text-[10px] font-bold text-[#2b3a4a]">{flight}</span>
-              </div>
-              <div className="text-right">
-                <span className="text-[8px] text-slate-500 font-bold uppercase tracking-wider block">Seat</span>
-                <span className="text-[10px] font-bold text-[#2b3a4a]">{seat}</span>
-              </div>
-            </div>
-
-            <div className="w-full h-[2px] bg-slate-200 my-1"></div>
-
-            <div className="flex justify-between items-center px-1">
-              <span className="text-lg font-bold text-[#2b3a4a]">{originCode}</span>
-              <Plane className="w-4 h-4 text-slate-400" />
-              <span className="text-lg font-bold text-[#2b3a4a]">GOA</span>
+            {/* Stamp Overlay on Photo */}
+            <div className="absolute -bottom-6 -right-6 w-20 h-20 border-2 border-red-600/80 rounded-full flex items-center justify-center opacity-80 mix-blend-multiply rotate-[-15deg] bg-red-50/20">
+               <span className="text-[7px] font-black text-red-600/90 text-center leading-tight uppercase tracking-widest px-2">
+                 Approved<br/>Builder
+               </span>
             </div>
           </div>
+
+          <div className="w-full mt-4 flex flex-col text-center">
+            <span className="text-[8px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Boarding Pass</span>
+            <span className="text-sm font-black text-slate-900 leading-tight truncate px-2">{name}</span>
+          </div>
+          
+          <div className="w-full h-[1px] bg-slate-200 my-4"></div>
+
+          <div className="flex justify-between items-center w-full px-2">
+            <span className="text-2xl font-black text-slate-800 tracking-tighter">{originCode}</span>
+            <Plane className="w-3 h-3 text-slate-400" />
+            <span className="text-2xl font-black text-teal-600 tracking-tighter">GOA</span>
+          </div>
+
         </div>
 
-        {/* Barcode (Crisp & Deterministic, Less Congested) */}
-        <div className="absolute right-4 top-20 bottom-12 w-8 flex flex-col justify-between z-30 opacity-90 mix-blend-multiply">
+        {/* Minimal Barcode on the far right edge */}
+        <div className="absolute right-0 top-6 bottom-6 w-8 flex flex-col justify-between opacity-40">
           {[
             2,4,1,1,3,2,1,2,3,1,
             2,1,4,1,2,3,1,1,2,2,
             3,1,1,2,1,2,4,1,1,2,
             3,1,2,2,4,1,3,1,2
           ].map((h, i) => (
-            <div key={i} className="w-full bg-[#2b3a4a]" style={{ height: `${h}px` }}></div>
+            <div key={i} className="w-full bg-slate-800" style={{ height: `${h}px` }}></div>
           ))}
         </div>
 
