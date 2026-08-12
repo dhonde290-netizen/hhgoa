@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: "Outfit", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-cinzel: "Cinzel", serif;
+  --font-rozha: "Rozha One", serif;
+}
+
+@layer base {
+  body {
+    background-color: #fffdf5;
+  }
+}
+
+/* Custom Palm Frond Swaying Animations */
+@keyframes sway-1 {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(4deg) skewX(3deg); }
+}
+@keyframes sway-2 {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(-5deg) skewX(-2deg); }
+}
+@keyframes sway-3 {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(6deg) skewX(4deg); }
+}
+@keyframes sway-4 {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(-4deg) skewX(-3deg); }
+}
+
+.animate-sway-1 { animation: sway-1 4s ease-in-out infinite; transform-origin: 250px 160px; }
+.animate-sway-2 { animation: sway-2 5s ease-in-out infinite; transform-origin: 250px 160px; }
+.animate-sway-3 { animation: sway-3 4.5s ease-in-out infinite; transform-origin: 250px 160px; }
+.animate-sway-4 { animation: sway-4 6s ease-in-out infinite; transform-origin: 250px 160px; }
+
+/* Dynamic Ocean Waves */
+@keyframes ocean-wave {
+  0% { transform: translateX(0) translateY(0) scaleY(1); }
+  50% { transform: translateX(-15%) translateY(12px) scaleY(0.75); }
+  100% { transform: translateX(-30%) translateY(0) scaleY(1); }
+}
+
+.animate-ocean-wave-1 {
+  animation: ocean-wave 10s ease-in-out infinite;
+}
+
+.animate-ocean-wave-2 {
+  animation: ocean-wave 8s ease-in-out infinite reverse;
+}
+
+/* Dynamic Bird Animations */
+@keyframes bird-fly {
+  0% { transform: translateX(-10vw) translateY(30px) scale(0.8); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateX(110vw) translateY(-80px) scale(0.4); opacity: 0; }
+}
+
+@keyframes bird-flap {
+  0%, 100% { d: path("M0,15 Q15,0 30,15 Q45,0 60,15"); }
+  50% { d: path("M0,15 Q15,35 30,15 Q45,35 60,15"); }
+}
+
+.bird-flock {
+  animation: bird-fly 18s linear infinite;
+  will-change: transform;
+}
+
+.bird-flock-delayed {
+  animation: bird-fly 22s linear infinite;
+  animation-delay: -7s;
+  will-change: transform;
+}
+
+.bird-flock-3 {
+  animation: bird-fly 25s linear infinite;
+  animation-delay: -12s;
+  will-change: transform;
+}
+
+.bird-flock-4 {
+  animation: bird-fly 15s linear infinite;
+  animation-delay: -2s;
+  will-change: transform;
+}
+
+.bird-wing {
+  animation: bird-flap 0.6s ease-in-out infinite;
+}
+
+.bird-wing-fast {
+  animation: bird-flap 0.4s ease-in-out infinite;
+}
+
+
