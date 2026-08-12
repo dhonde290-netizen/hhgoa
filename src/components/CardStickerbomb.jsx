@@ -48,9 +48,9 @@ export function CardStickerbomb({ data }) {
           
           {/* Top Row: Passenger & Destination Header */}
           <div className="flex justify-between items-start">
-            <div className="flex flex-col z-30">
+            <div className="flex flex-col z-30 max-w-[180px]">
               <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">Passenger</span>
-              <span className="text-xl text-slate-800 font-bold uppercase tracking-wide leading-tight">{name}</span>
+              <span className="text-xl text-slate-800 font-bold uppercase tracking-wide leading-tight line-clamp-2">{name}</span>
               <span className="text-[10px] text-red-800/90 font-bold uppercase tracking-widest mt-1">{role}</span>
               {/* Tech Stack */}
               {selectedSkills.length > 0 && (
