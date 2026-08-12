@@ -15,8 +15,8 @@ export default function App() {
     builderTitle: '',
     originCity: '',
     photoUrl: null,
-    skills: ['react', 'python'],
-    stickers: ['verified', 'top_builder'],
+    skills: [],
+    stickers: [],
     builderId: 'HH-GOA-2026-5300'
   });
 

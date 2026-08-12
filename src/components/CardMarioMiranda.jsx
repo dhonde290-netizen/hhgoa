@@ -184,16 +184,12 @@ export function CardMarioMiranda({ data, cardRef }) {
           <div className="flex flex-col gap-1.5 pt-1">
             <div className="text-[8px] font-mono font-bold uppercase text-[#685a4a]">Verified Skills</div>
             <div className="flex flex-wrap gap-1">
-              {selectedSkills.length > 0 ? (
+              {selectedSkills.length > 0 && (
                 selectedSkills.map((s) => (
                   <span key={s.id} className="px-2 py-0.5 bg-[#eaddc5] border border-[#685a4a] text-[#2d6f77] text-[9px] font-mono font-bold uppercase tracking-wider">
                     {s.label}
                   </span>
                 ))
-              ) : (
-                <span className="px-2 py-0.5 bg-[#eaddc5] border border-[#685a4a] text-[#2d6f77] text-[9px] font-mono font-bold uppercase tracking-wider">
-                  REACT • PYTHON
-                </span>
               )}
             </div>
           </div>

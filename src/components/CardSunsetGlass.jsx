@@ -69,17 +69,13 @@ export function CardSunsetGlass({ data, cardRef }) {
 
       {/* SKILL TAGS */}
       <div className="relative z-10 my-2 flex flex-wrap items-center justify-center gap-1.5">
-        {selectedSkills.length > 0 ? (
+        {selectedSkills.length > 0 && (
           selectedSkills.map((s) => (
             <span key={s.id} className="px-3 py-1 bg-slate-900/80 border border-teal-400/40 text-teal-300 text-xs font-bold rounded-xl flex items-center gap-1">
               <span>{s.icon}</span>
               <span>{s.label}</span>
             </span>
           ))
-        ) : (
-          <span className="px-3 py-1 bg-slate-900/80 border border-teal-400/40 text-teal-300 text-xs font-bold rounded-xl">
-            ⚛️ React / Vite • 🐍 Python
-          </span>
         )}
       </div>
 

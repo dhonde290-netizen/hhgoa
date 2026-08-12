@@ -108,16 +108,12 @@ export function CardAzulejoRoyal({ data, cardRef }) {
           <div className="mt-4 flex flex-col items-center gap-2">
             <div className="text-[9px] font-serif uppercase tracking-[0.2em] text-[#1e40af]">Especialidades</div>
             <div className="flex flex-wrap justify-center gap-1.5">
-              {selectedSkills.length > 0 ? (
+              {selectedSkills.length > 0 && (
                 selectedSkills.map((s) => (
                   <span key={s.id} className="px-2 py-0.5 bg-white border border-[#1e3a8a] text-[#1e3a8a] text-[9px] font-serif uppercase tracking-wider">
                     {s.label}
                   </span>
                 ))
-              ) : (
-                <span className="px-2 py-0.5 bg-white border border-[#1e3a8a] text-[#1e3a8a] text-[9px] font-serif uppercase tracking-wider">
-                  REACT • PYTHON
-                </span>
               )}
             </div>
           </div>
