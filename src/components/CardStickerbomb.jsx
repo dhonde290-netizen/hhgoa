@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane } from 'lucide-react';
+import { Plane, QrCode } from 'lucide-react';
 import { SKILL_TAG_OPTIONS } from '../utils/titles';
 
 export function CardStickerbomb({ data }) {
@@ -87,6 +87,23 @@ export function CardStickerbomb({ data }) {
               <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">To (Destination)</span>
               <span className="text-4xl font-bold text-[#2b3a4a] tracking-tighter">GOA</span>
               <span className="text-[10px] font-bold text-red-800/80 uppercase mt-1">HACKER HOUSE</span>
+            </div>
+
+            {/* Added Boarding Pass Details & QR Code */}
+            <div className="ml-8 flex items-center gap-6 z-30 bg-white/40 p-3 rounded-xl border border-white/60 shadow-sm backdrop-blur-sm">
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-col text-right">
+                  <span className="text-[8px] text-slate-500 font-bold uppercase tracking-widest">Class</span>
+                  <span className="text-sm font-black text-red-800/90 tracking-widest uppercase leading-none">VIP</span>
+                </div>
+                <div className="flex flex-col text-right">
+                  <span className="text-[8px] text-slate-500 font-bold uppercase tracking-widest">Boarding</span>
+                  <span className="text-sm font-bold text-[#2b3a4a] tracking-widest uppercase leading-none">08:00 AM</span>
+                </div>
+              </div>
+              <div className="w-16 h-16 bg-white p-1 rounded-lg shadow-sm border border-slate-200 shrink-0 flex items-center justify-center">
+                <QrCode className="w-12 h-12 text-[#2b3a4a]" strokeWidth={1.5} />
+              </div>
             </div>
           </div>
 
