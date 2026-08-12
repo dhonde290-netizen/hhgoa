@@ -29,8 +29,9 @@ export function ControlPanel({
   const isPhotoValid = Boolean(data.photoUrl);
   const isNameValid = Boolean(data.name && data.name.trim().length > 0);
   const isTitleValid = Boolean(data.builderTitle && data.builderTitle.trim().length > 0);
+  const isCityValid = Boolean(data.originCity && data.originCity.trim().length > 0);
   
-  const canGenerate = isPhotoValid && isNameValid && isTitleValid;
+  const canGenerate = isPhotoValid && isNameValid && isTitleValid && isCityValid;
 
   const handleFileUpload = async (e) => {
     const file = e.target.files?.[0];
