@@ -66,10 +66,10 @@ export default function App() {
       await new Promise((r) => setTimeout(r, 100));
 
       const dataUrl = await toPng(cardRef.current, {
-        cacheBust: true,
         pixelRatio: 3,
         quality: 0.98,
-        useCORS: true
+        useCORS: true,
+        skipAutoScale: true
       });
 
       setGeneratedImageUrl(dataUrl);
@@ -77,7 +77,7 @@ export default function App() {
       return dataUrl;
     } catch (err) {
       console.error('Export error:', err);
-      alert('Failed to generate image. Please try again. If on Safari/iOS, try another browser.');
+      alert('Failed to generate image: ' + (err.message || err.toString()));
       setIsExporting(false);
       return null;
     }
