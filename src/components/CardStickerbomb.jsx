@@ -205,13 +205,13 @@ export function CardStickerbomb({ data }) {
           </div>
         </div>
 
-        {/* Barcode (Crisp & Deterministic) */}
+        {/* Barcode (Crisp & Deterministic, Less Congested) */}
         <div className="absolute right-4 top-20 bottom-12 w-8 flex flex-col justify-between z-30 opacity-90 mix-blend-multiply">
           {[
-            3,1,2,1,4,1,1,2,3,1,2,2,1,3,1,1,4,2,1,2,3,1,1,2,
-            2,1,3,1,2,2,1,4,1,1,2,3,1,2,2,1,3,1,1,4,2,1,2,3,
-            1,1,2,2,1,3,1,2,2,1,4,1,1,2,3,1,2,2,1,3,1,1,4,2,
-            1,2,3,1,1,2,2,1,3,1,2,2,1,4,1,1,2,3,1,2
+            2,4,1,1,3,2,1,2,3,1,
+            2,1,4,1,2,3,1,1,2,2,
+            3,1,1,2,1,2,4,1,1,2,
+            3,1,2,2,4,1,3,1,2
           ].map((h, i) => (
             <div key={i} className="w-full bg-[#2b3a4a]" style={{ height: `${h}px` }}></div>
           ))}
