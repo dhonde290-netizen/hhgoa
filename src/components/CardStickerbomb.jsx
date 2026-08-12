@@ -165,7 +165,7 @@ export function CardStickerbomb({ data }) {
         </div>
 
         {/* Stub Content */}
-        <div className="p-4 pr-12 flex-1 flex flex-col items-center">
+        <div className="p-4 pr-16 flex-1 flex flex-col items-center">
           
           {/* Prominent Photo */}
           <div className="w-full h-44 rounded-xl border-4 border-white overflow-hidden bg-slate-200 shadow-md relative z-30 shrink-0">
