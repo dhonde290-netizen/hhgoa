@@ -60,7 +60,7 @@ export function CardStickerbomb({ data }) {
           <div className="flex justify-between items-start">
             <div className="flex flex-col z-30 max-w-[220px]">
               <span className="text-[9px] text-slate-400 font-black uppercase tracking-[0.2em] mb-1">Passenger Name</span>
-              <span className="text-2xl text-slate-900 font-black uppercase tracking-tight leading-none truncate">{name}</span>
+              <span className="text-2xl text-slate-900 font-black uppercase tracking-tight leading-[1.1] line-clamp-2">{name}</span>
               <span className="text-[10px] text-teal-700 font-bold uppercase tracking-widest mt-2">{role}</span>
               
               {/* Tech Stack */}
