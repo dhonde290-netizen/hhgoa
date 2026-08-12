@@ -89,10 +89,10 @@ export default function App() {
     if (dataUrl) {
       const pdf = new jsPDF({
         orientation: 'landscape',
-        unit: 'px',
-        format: [800, 400]
+        unit: 'mm',
+        format: [160, 80]
       });
-      pdf.addImage(dataUrl, 'PNG', 0, 0, 800, 400);
+      pdf.addImage(dataUrl, 'PNG', 0, 0, 160, 80);
       pdf.save(`HHGoa2026_BuilderPass_${badgeData.name.replace(/\s+/g, '_')}.pdf`);
     }
   };
