@@ -102,7 +102,7 @@ export function ShareModal({ isOpen, onClose, imageUrl, badgeData, onDownload })
         <div className="space-y-2 pt-1">
           <button
             onClick={handleTweet}
-            className="w-full py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-sm shadow-md transition flex items-center justify-center gap-2"
+            className="hover-lift w-full py-3 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2"
           >
             <XIcon className="w-4 h-4 fill-current" />
             <span>Open Pre-filled Tweet on X</span>
@@ -111,7 +111,7 @@ export function ShareModal({ isOpen, onClose, imageUrl, badgeData, onDownload })
 
           <button
             onClick={onDownload}
-            className="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs border border-slate-300 transition flex items-center justify-center gap-2"
+            className="hover-lift w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs border border-slate-300 flex items-center justify-center gap-2"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download Image to Attach on X</span>

@@ -132,7 +132,7 @@ export default function App() {
             />
           </div>
         ) : (
-          <div className="w-full flex flex-col items-center justify-center fade-in-up bg-white/90 backdrop-blur-xl rounded-[2rem] p-6 sm:p-10 shadow-2xl border border-white/50 relative overflow-hidden">
+          <div className="w-full flex flex-col items-center justify-center fade-in-up glass-card rounded-[2rem] p-6 sm:p-10 relative overflow-hidden">
             
             {/* Decorative background blur */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-amber-300/20 rounded-full blur-3xl -z-10" />
@@ -153,9 +153,9 @@ export default function App() {
               onMouseLeave={handleMouseLeave}
               style={{ perspective: '1200px' }}
             >
-              <div className="relative pointer-events-none origin-center" style={{ 
+              <div className="relative pointer-events-none origin-center hover-lift" style={{ 
                 transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(0.65)`,
-                transition: isExporting ? 'none' : 'transform 0.1s ease-out' 
+                transition: isExporting ? 'none' : 'transform 0.1s ease-out, box-shadow 0.3s ease' 
               }}>
                 <div ref={cardRef}>
                   <CardStickerbomb data={badgeData} />
@@ -167,7 +167,7 @@ export default function App() {
             <div className="w-full max-w-md flex flex-col gap-3">
               <button
                 onClick={handleDownload}
-                className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-800 to-teal-900 text-white font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-teal-900/20 flex items-center justify-center gap-2"
+                className="hover-lift w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-emerald-800 to-teal-900 text-white font-bold text-sm active:scale-95 flex items-center justify-center gap-2"
               >
                 <Download className="w-5 h-5" />
                 <span>Download High-Res Pass</span>
@@ -175,10 +175,10 @@ export default function App() {
               
               <button
                 onClick={handleShareModalOpen}
-                className="w-full py-4 px-6 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
+                className="hover-lift w-full py-4 px-6 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 hover:border-slate-300 active:scale-95 flex items-center justify-center gap-2"
               >
                 <Share2 className="w-5 h-5" />
-                <span>Share to X (#FrameInGoa)</span>
+                <span>Share to X</span>
               </button>
               
               <button onClick={() => setIsGenerated(false)} className="text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors text-center mt-4">

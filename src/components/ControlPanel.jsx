@@ -91,7 +91,7 @@ export function ControlPanel({
   // ----------------------------------------------------
   return (
     <>
-      <div className="w-full bg-white/95 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-10 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] text-slate-800 font-outfit border border-white relative overflow-hidden">
+      <div className="w-full glass-card hover-lift rounded-[2.5rem] p-8 md:p-10 text-slate-800 font-outfit relative overflow-hidden">
         
         {/* Decorative architectural accents */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-bl-[100px] -z-10 opacity-50" />
@@ -157,7 +157,7 @@ export function ControlPanel({
           {/* INPUT FIELDS: Floating Underline Style */}
           <div className="flex flex-col gap-6">
             {/* Full Name */}
-            <div className="relative group">
+            <div className="relative group input-focus-ring">
               <label className={`absolute left-0 transition-all duration-200 font-mono text-xs font-bold uppercase tracking-widest pointer-events-none
                 ${focusedInput === 'name' || data.name ? '-top-5 text-teal-600' : 'top-3 text-slate-400'}`}>
                 Full Name
@@ -174,7 +174,7 @@ export function ControlPanel({
             </div>
 
             {/* Stack / Role */}
-            <div className="relative group mt-2">
+            <div className="relative group mt-2 input-focus-ring">
               <label className={`absolute left-0 transition-all duration-200 font-mono text-xs font-bold uppercase tracking-widest pointer-events-none
                 ${focusedInput === 'role' || data.builderTitle ? '-top-5 text-teal-600' : 'top-3 text-slate-400'}`}>
                 Stack / Role
@@ -191,7 +191,7 @@ export function ControlPanel({
             </div>
 
             {/* Origin City */}
-            <div className="relative group mt-2">
+            <div className="relative group mt-2 input-focus-ring">
               <label className={`absolute left-0 transition-all duration-200 font-mono text-xs font-bold uppercase tracking-widest pointer-events-none
                 ${focusedInput === 'origin' || data.originCity ? '-top-5 text-teal-600' : 'top-3 text-slate-400'}`}>
                 Origin City
