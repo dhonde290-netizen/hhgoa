@@ -107,7 +107,7 @@ export default function App() {
   return (
     <Backdrop>
       {/* Rephrased Top Hero Section */}
-      <div className="text-center max-w-3xl mx-auto space-y-4 mb-10 mt-4">
+      <div className="text-center max-w-3xl mx-auto space-y-4 mb-10 mt-4 animate-fade-in">
         <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight font-serif uppercase leading-tight">
           BUILD IN GOA <span className="text-[#084c2e] font-serif underline decoration-[#f5be16] decoration-4 underline-offset-8 block sm:inline mt-2 sm:mt-0">SHIP TO THE WORLD</span>
         </h2>
@@ -117,9 +117,9 @@ export default function App() {
       </div>
 
       {/* Main Container */}
-      <div className="flex flex-col items-center max-w-3xl mx-auto w-full transition-all duration-500">
+      <div className="flex flex-col items-center max-w-3xl mx-auto w-full transition-all duration-500 animate-fade-in-delayed">
         {!isGenerated ? (
-          <div className="w-full max-w-2xl">
+          <div className="w-full max-w-2xl fade-in-up">
             <ControlPanel
               data={badgeData}
               onChange={handleDataChange}
